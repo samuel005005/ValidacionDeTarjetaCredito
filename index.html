@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algoritmo de luhn</title>
+    <style>
+        h1 {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        body {
+            background: cornsilk;
+        }
+
+        form > input {
+            font-size: 6px;
+        }
+
+        form > h2 {
+            font-size: 6px;
+        }
+
+        form > button {
+            font-size: 6px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<h1>Algoritmo de luhn</h1>
+<form method="get">
+    <h2>Ingrese su numero de Tajeta de credito</h2>
+    <input type="number" id="CardNumber"/>
+    <button type="button" onclick="myFunction()">
+        Validar
+    </button>
+    <br>
+    <div id="result">
+
+    </div>
+</form>
+</body>
+<foot>
+    <script>
+        function myFunction() {
+            var CardNumber = document.getElementById('CardNumber').value;
+            const Http = new XMLHttpRequest();
+            const url = 'http://192.168.106.51:8090/index.php?CardNumber='+CardNumber;
+            Http.open("GET", url);
+            Http.send();
+            Http.onreadystatechange = (e) => {
+                document.getElementById('result').innerText = Http.responseText;
+                // console.log(Http.responseText)
+            }
+        }
+
+    </script>
+</foot>
+</html>
