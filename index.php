@@ -1,6 +1,10 @@
 <?php
 //$CardNumber = 4220943143799218;
 $CardNumber = $_GET['CardNumber'] ?? null;
+if (!is_numeric($CardNumber)) {
+    echo("INVALID\n");
+    return;
+}
 $digit1 = 0;
 $digit2 = 0;
 $num_digits = 0;
